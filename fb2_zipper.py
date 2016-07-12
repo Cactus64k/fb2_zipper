@@ -2,16 +2,23 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import zipfile
 import argparse
 from xml.dom import minidom
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-f", "--folder", required=True, dest="folder", help="folder for search books")
+    parser.add_argument("-f", "--folder", dest="folder", help="folder for search books")
+    parser.add_argument("-b", "--book", dest="book", help="handle one book")
     parser.add_argument("-r", "--remove", action="store_true", help="remove old books")
     args = parser.parse_args()
-    folder_hndl(args.folder, args.remove)
+    if args.book != None:
+        folder_hndl(args.book, args.remove)
+    elif args.folder != None:
+        folder_hndl(args.folder, args.remove)
+    else:
+        print("One of folowing argument is required: --book, --folder", file=sys.stderr)
 
 
 def folder_hndl(path, remove=False):
