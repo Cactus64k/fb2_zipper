@@ -118,9 +118,8 @@ def fb2_get_book_name(dom):
     last_name = xml_get_text(last_name_node[0].firstChild)
 
     if book_name != None and first_name != None and last_name != None:
-        book_name = book_name.replace("\\", ".")
-        book_name = book_name.replace("/", ".")
-        book_name = book_name.replace("|", ".")
+        tr_table = book_name.maketrans("\/?|:", ".....")
+        book_name = book_name.translate(tr_table,)
         return first_name + " " + last_name + " - " + book_name + ".fb2"
     else:
         return None
