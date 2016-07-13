@@ -3,9 +3,13 @@ Zip and rename fb2 file by author and book title
 
 Options:
 
-	--folder
+	--folder=/path/to/library
 	-f
 	Folder to search books
+	
+	--book=/path/to/book.fb2
+	-b
+	handle one book
 	
 	--remove
 	-r
